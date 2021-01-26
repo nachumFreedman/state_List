@@ -28,7 +28,6 @@ const States = () => {
             })
 
     }, [])
-    // console.log(Store.getState().appData.states)
 
     return (
         <Tab.Navigator>

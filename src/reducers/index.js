@@ -11,6 +11,14 @@ const Reducer = (state = initialState, action) => {
             return {
                 ...state,
                 currentComponent: action.payload
+            };
+        case "UPDATE_STATE":
+
+            const indexOfUpdatedState = state.states.data.findIndex((currentState) => action.payload.item.state === currentState.state);
+            state.states.data[indexOfUpdatedState] = action.payload.item;
+            return {
+                ...state,
+                states: state.states
             }
         default:
             return state;

@@ -7,3 +7,8 @@ export const changeComponent = (component) => ({
     type: "NEW_CURRENT_COMPONENT",
     payload: component
 })
+
+export const updateStates = (updatedState) => ({
+    type: "UPDATE_STATE",
+    payload: updatedState
+})
