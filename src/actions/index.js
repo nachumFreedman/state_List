@@ -3,9 +3,14 @@ export const saveStates = (json) => ({
     payload: json
 });
 
-export const changeComponent = (component) => ({
-    type: "NEW_CURRENT_COMPONENT",
-    payload: component
+export const openModal = (state) => ({
+    type: "OPEN_MODAL",
+    payload: state
+})
+
+export const saveNavigation = (navigation) => ({
+    type: "SAVE_NAVIGATION",
+    payload: navigation
 })
 
 export const updateStates = (updatedState) => ({

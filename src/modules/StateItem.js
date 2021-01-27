@@ -16,11 +16,13 @@ import { useSelector, useDispatch } from 'react-redux';
 
 let lastTap = null;
 const tapDelay = 300;
+let singleTapTimeout;
 
 const StateItem = ({ eachState }) => {
     const dispatch = useDispatch();
 
     const handleDoubleTap = () => {
+        clearTimeout(singleTapTimeout)
         const now = Date.now();
         if (
             lastTap &&
@@ -30,6 +32,9 @@ const StateItem = ({ eachState }) => {
             dispatch(wpActions.updateStates(eachState));
         } else {
             lastTap = now;
+            singleTapTimeout = setTimeout(() => {
+                dispatch(wpActions.openModal(eachState));
+            }, 300)
         }
     }
     return (

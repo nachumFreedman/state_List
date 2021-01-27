@@ -7,10 +7,18 @@ const Reducer = (state = initialState, action) => {
                 ...state,
                 states: action.payload,
             };
-        case "NEW_CURRENT_COMPONENT":
+        case "SAVE_NAVIGATION":
             return {
                 ...state,
-                currentComponent: action.payload
+                navigation: action.payload,
+            };
+        case "OPEN_MODAL":
+            setTimeout(() => {
+                state.navigation.push("Modal")
+            })
+            return {
+                ...state,
+                currentModalState: action.payload
             };
         case "UPDATE_STATE":
 

@@ -1,43 +1,29 @@
 import React, { useState } from 'react';
-import {
-    StyleSheet,
-    View,
-    Text
-} from 'react-native';
-import { Store } from '../store';
-import * as wpActions from '../actions';
-import { useSelector, useDispatch } from 'react-redux';
-import StatesList from "./StatesList";
-import StatesFiler from "./StatesFilter";
+import { createStackNavigator, HeaderBackButton } from '@react-navigation/stack';
+import TabNavigation from "./TabNavigation";
+import StateModal from "./StateModal";
 
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-const Tab = createMaterialBottomTabNavigator();
+const Stack = createStackNavigator();
 
-const States = () => {
-    const dispatch = useDispatch();
-    const storeState = useSelector((state) => state.stateData);
-    useState(() => {
-        fetch("http://pos.idtretailsolutions.com/countytest/states")
-            .then((res) =>
-                res.json()
-            ).then((states) => {
-                dispatch(wpActions.saveStates(states));
-                dispatch(wpActions.changeComponent("list"));
-            }).catch(() => {
-                console.error("request to state api went wrong:", err);
-            })
-
-    }, [])
-
+function MyStack() {
     return (
-        <Tab.Navigator>
-            <Tab.Screen name="List" component={StatesList} />
-            <Tab.Screen name="Filter" component={StatesFiler} />
-        </Tab.Navigator>
+        <Stack.Navigator>
+            <Stack.Screen options={{ headerShown: false }} name="TabNavigation" component={TabNavigation} />
+            <Stack.Screen options={{
+                headerShown: true,
+                title: 'State details',
+                headerLeft: (props) => (
+                    <HeaderBackButton
+                        {...props}
+                        label="back"
+                        onPress={() => {
+                            props.onPress();
+                        }}
+                    />
+                ),
+            }} name="Modal" component={StateModal} />
+        </Stack.Navigator>
     );
-};
+}
 
-const styles = StyleSheet.create({
-});
-
-export default States;
+export default MyStack;

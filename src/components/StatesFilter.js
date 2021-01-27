@@ -13,7 +13,6 @@ import Filter from "../modules/Filter";
 
 const StatesFiler = () => {
     const [searchText, setSearchText] = useState("");
-    // console.log(Store.getState().appData.states)
 
     return (
         <>
