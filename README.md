@@ -5,4 +5,5 @@ IOS
 `npx react-native run-ios`
 
 ANDROID
+`yarn`
 `npx react-native run-android`
