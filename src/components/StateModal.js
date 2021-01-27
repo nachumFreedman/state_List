@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {
-    Alert,
-    Modal,
     StyleSheet,
     Text,
     ScrollView,
-    View
 } from 'react-native';
 import { useSelector } from 'react-redux';
 
@@ -39,7 +36,7 @@ const StateModal = () => {
                 <Text>{`There are: ${stateDetails.counties} counties in the state of ${stateDetails.state}`}</Text>
                 <Text style={styles.counties}>The names of all the counties in the state are: {countiesData.map((county) => county.county)}</Text>
                 <Text>Accumulated county population: {stateDetails.population}</Text>
-                <Text>Which is {stateDetails.population === stateDetails.population ? "equal to the states record" : "not equal to the states record"}</Text>
+                <Text>Which is {stateDetails.population === countiesPopulation ? "equal to the states record" : "not equal to the current states record"}</Text>
             </ScrollView>
         </>
     );

@@ -1,17 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
     StyleSheet,
-    View,
     Text,
-    Dimensions,
-    FlatList,
     TouchableOpacity,
-    StatusBar,
-    SafeAreaView
 } from 'react-native';
-import { Store } from '../store';
 import * as wpActions from '../actions';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 
 let lastTap = null;

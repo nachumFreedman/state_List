@@ -10,15 +10,14 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import StatesList from "./StatesList";
 import StatesFiler from "./StatesFilter";
-import StateModal from "./StateModal";
 
 import { createMaterialBottomTabNavigator, createStackNavigator } from '@react-navigation/material-bottom-tabs';
 const Tab = createMaterialBottomTabNavigator();
 
-
+//TODO takeout tabs and only use 'stack'
 const States = ({ navigation }) => {
     const dispatch = useDispatch();
-    const storeState = useSelector((state) => state.stateData);
+
     useState(() => {
         dispatch(wpActions.saveNavigation(navigation));
 

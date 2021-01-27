@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import {
     StyleSheet,
-    View,
-    Text,
     SafeAreaView
 } from 'react-native';
 
@@ -18,7 +16,6 @@ const Filter = (props) => {
 
     return (
         <SafeAreaView>
-
             <Searchbar
                 placeholder="Search"
                 onChangeText={onChangeSearch}

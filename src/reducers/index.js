@@ -1,35 +1,34 @@
-const initialState = {};
+const initialStore = {};
 
-const Reducer = (state = initialState, action) => {
+const Reducer = (store = initialStore, action) => {
     switch (action.type) {
         case "NEW_STATES":
             return {
-                ...state,
+                ...store,
                 states: action.payload,
             };
         case "SAVE_NAVIGATION":
             return {
-                ...state,
+                ...store,
                 navigation: action.payload,
             };
         case "OPEN_MODAL":
             setTimeout(() => {
-                state.navigation.push("Modal")
+                storenavigation.push("Modal")
             })
             return {
-                ...state,
+                ...store,
                 currentModalState: action.payload
             };
         case "UPDATE_STATE":
-
-            const indexOfUpdatedState = state.states.data.findIndex((currentState) => action.payload.item.state === currentState.state);
-            state.states.data[indexOfUpdatedState] = action.payload.item;
+            const indexOfUpdatedState = storestates.data.findIndex((currentState) => action.payload.item.state === currentstorestate);
+            storestates.data[indexOfUpdatedState] = action.payload.item;
             return {
-                ...state,
-                states: state.states
+                ...store,
+                states: storestates
             }
         default:
-            return state;
+            return store;
     }
 };
 export default Reducer;
