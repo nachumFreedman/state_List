@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     StyleSheet,
     View,
     Text
 } from 'react-native';
-import { Store } from '../store';
 import * as wpActions from '../actions';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import StatesList from "./StatesList";
 import StatesFiler from "./StatesFilter";
@@ -16,6 +15,13 @@ const Tab = createMaterialBottomTabNavigator();
 
 //TODO takeout tabs and only use 'stack'
 const States = ({ navigation }) => {
+    const [ready, setReady] = useState(false);
+    useEffect(() => {
+        setTimeout(() => {
+            setReady(true);
+        })
+    }, []);
+
     const dispatch = useDispatch();
 
     useState(() => {
@@ -33,7 +39,7 @@ const States = ({ navigation }) => {
     }, [])
 
 
-
+    if (!ready) return <></>
     return (
         <>
             <Tab.Navigator>

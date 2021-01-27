@@ -43,7 +43,12 @@ const StateItem = ({ eachState }) => {
                     ...styles.eachState,
                     color: "red"
                 }
-                : styles.eachState}>
+                :
+                {
+                    ...styles.eachState,
+                    color: "black"
+
+                }}>
                 {eachState.item.state}
             </Text>
         </TouchableOpacity>

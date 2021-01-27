@@ -14,18 +14,18 @@ const Reducer = (store = initialStore, action) => {
             };
         case "OPEN_MODAL":
             setTimeout(() => {
-                storenavigation.push("Modal")
+                store.navigation.push("Modal")
             })
             return {
                 ...store,
                 currentModalState: action.payload
             };
         case "UPDATE_STATE":
-            const indexOfUpdatedState = storestates.data.findIndex((currentState) => action.payload.item.state === currentstorestate);
-            storestates.data[indexOfUpdatedState] = action.payload.item;
+            const indexOfUpdatedState = store.states.data.findIndex((currentState) => action.payload.item.state === currentState);
+            store.states.data[indexOfUpdatedState] = action.payload.item;
             return {
                 ...store,
-                states: storestates
+                states: store.states
             }
         default:
             return store;

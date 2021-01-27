@@ -1,6 +1,7 @@
 apply plugin: "com.android.application"
 
 import com.android.build.OutputFile
+import javax.tools.ToolProvider
 
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
@@ -131,6 +132,7 @@ android {
     }
 
     defaultConfig {
+        missingDimensionStrategy 'react-native-communit_async-storage', 'general' 
         applicationId "com.state_test"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
@@ -179,7 +181,7 @@ android {
             }
 
         }
-    }
+    }  
 }
 
 dependencies {
