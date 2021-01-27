@@ -6,7 +6,9 @@ import { Store, persistor } from './src/store';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
+
 const App = () => {
+
   return (
     <NavigationContainer>
       <Provider store={Store}>

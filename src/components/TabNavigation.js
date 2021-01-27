@@ -16,26 +16,29 @@ const Tab = createMaterialBottomTabNavigator();
 //TODO takeout tabs and only use 'stack'
 const States = ({ navigation }) => {
     const [ready, setReady] = useState(false);
-    useEffect(() => {
+
+    const runSetReady = () => {
         setTimeout(() => {
             setReady(true);
         })
-    }, []);
+    }
 
     const dispatch = useDispatch();
 
     useState(() => {
         dispatch(wpActions.saveNavigation(navigation));
 
-        fetch("http://pos.idtretailsolutions.com/countytest/states")
-            .then((res) =>
-                res.json()
-            ).then((states) => {
-                dispatch(wpActions.saveStates(states));
-            }).catch((err) => {
-                console.error("request to state api went wrong:", err);
-            })
-
+        setTimeout(() => {
+            fetch("http://pos.idtretailsolutions.com/countytest/states")
+                .then((res) =>
+                    res.json()
+                ).then((states) => {
+                    dispatch(wpActions.saveStates(states));
+                    runSetReady();
+                }).catch((err) => {
+                    console.error("request to state api went wrong:", err.message, err);
+                })
+        })
     }, [])
 
 

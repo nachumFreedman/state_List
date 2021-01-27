@@ -12,6 +12,7 @@ function MyStack() {
         })
     }, []);
 
+
     if (!ready) return <></>
     return (
         <Stack.Navigator>
