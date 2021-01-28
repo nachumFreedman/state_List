@@ -26,7 +26,7 @@ const StateModal = ({ currentState }) => {
         }, 0)
         setCountiesPopulation(newCountiesPopulation);
     }, [countiesData])
-    if (!stateDetails) return <></>
+    if (!stateDetails) return <ActivityIndicator />
     return (
         <ScrollView nestedScrollEnabled={true} style={styles.innerContainer} contentContainerStyle={styles.container}>
             <View style={styles.scrollViewHeightController} >

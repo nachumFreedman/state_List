@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { createStackNavigator, HeaderBackButton } from '@react-navigation/stack';
 import TabNavigation from "./TabNavigation";
 import StateModal from "./StateModal";
+import {
+    ActivityIndicator
+} from 'react-native';
 
 const Stack = createStackNavigator();
 function MyStack() {
@@ -13,7 +16,7 @@ function MyStack() {
     }, []);
 
 
-    if (!ready) return <></>
+    if (!ready) return <ActivityIndicator />
     return (
         <Stack.Navigator>
             <Stack.Screen options={{ headerShown: false }} name="TabNavigation" component={TabNavigation} />

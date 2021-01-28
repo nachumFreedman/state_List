@@ -27,7 +27,7 @@ const StateItem = ({ eachState }) => {
         } else {
             lastTap = now;
             singleTapTimeout = setTimeout(() => {
-                dispatch(wpActions.openModal(eachState));
+                dispatch(wpActions.stateForDetails(eachState));
             }, 300)
         }
     }

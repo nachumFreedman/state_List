@@ -3,15 +3,10 @@ export const saveStates = (json) => ({
     payload: json
 });
 
-export const openModal = (state) => ({
-    type: "OPEN_MODAL",
+export const stateForDetails = (state) => ({
+    type: "STATE_DETAILS",
     payload: state
 })
-export const closeModal = () => ({
-    type: "CLOSE_MODAL",
-    payload: false
-})
-
 
 export const updateStates = (updatedState) => ({
     type: "UPDATE_STATE",

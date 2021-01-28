@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {
     StyleSheet,
     View,
-    ScrollView
+    ScrollView,
+    ActivityIndicator
 } from 'react-native';
 import * as wpActions from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
@@ -45,7 +46,7 @@ const States = () => {
     }, [])
 
 
-    if (!ready) return <></>
+    if (!ready) return <ActivityIndicator />
     return (<>
         <Filter searchText={(text) => { setSearchText(text) }} />
         <ScrollView horizontal={true} style={styles.container}>
