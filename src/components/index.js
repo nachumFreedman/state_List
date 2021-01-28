@@ -17,7 +17,7 @@ function MyStack() {
     return (
         <Stack.Navigator>
             <Stack.Screen options={{ headerShown: false }} name="TabNavigation" component={TabNavigation} />
-            <Stack.Screen options={{
+            {/* <Stack.Screen options={{
                 headerShown: true,
                 title: 'State details',
                 headerLeft: (props) => (
@@ -29,7 +29,7 @@ function MyStack() {
                         }}
                     />
                 ),
-            }} name="Modal" component={StateModal} />
+            }} name="Modal" component={ } /> */}
         </Stack.Navigator>
     );
 }

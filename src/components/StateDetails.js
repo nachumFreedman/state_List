@@ -8,7 +8,7 @@ import {
 import { useSelector } from 'react-redux';
 
 
-const StateDetails = ({ currentState }) => {
+const StateModal = ({ currentState }) => {
     const [countiesData, setCountiesData] = useState([]);
     const [countiesPopulation, setCountiesPopulation] = useState(0);
     let stateDetails = currentState;
@@ -63,4 +63,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default StateDetails;
+export default StateModal;

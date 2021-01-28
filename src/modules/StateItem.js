@@ -60,9 +60,6 @@ const styles = StyleSheet.create({
         textAlign: "center",
         fontSize: 30,
         margin: 5
-    },
-    stateItemContainer: {
-        width: "50%"
     }
 });
 export default StateItem;

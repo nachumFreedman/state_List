@@ -2,20 +2,24 @@ import React, { useState, useEffect } from 'react';
 import {
     StyleSheet,
     View,
-    Text
+    ScrollView
 } from 'react-native';
 import * as wpActions from '../actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import StatesList from "./StatesList";
 import StatesFiler from "./StatesFilter";
+import Filter from "../modules/Filter";
+import StateDetails from "./StateDetails";
 
 import { createMaterialBottomTabNavigator, createStackNavigator } from '@react-navigation/material-bottom-tabs';
 const Tab = createMaterialBottomTabNavigator();
 
 //TODO takeout tabs and only use 'stack'
-const States = ({ navigation }) => {
+const States = () => {
+    const [searchText, setSearchText] = useState("");
     const [ready, setReady] = useState(false);
+    const modal = useSelector((store) => store.stateData.currentModalState.item);
 
     const runSetReady = () => {
         setTimeout(() => {
@@ -26,7 +30,6 @@ const States = ({ navigation }) => {
     const dispatch = useDispatch();
 
     useState(() => {
-        dispatch(wpActions.saveNavigation(navigation));
 
         setTimeout(() => {
             fetch("http://pos.idtretailsolutions.com/countytest/states")
@@ -43,17 +46,23 @@ const States = ({ navigation }) => {
 
 
     if (!ready) return <></>
-    return (
-        <>
-            <Tab.Navigator>
-                <Tab.Screen name="List" component={StatesList} />
-                <Tab.Screen name="Filter" component={StatesFiler} />
-            </Tab.Navigator>
-        </>
+    return (<>
+        <Filter searchText={(text) => { setSearchText(text) }} />
+        <ScrollView horizontal={true} style={styles.container}>
+            <StatesList />
+            <StatesFiler searchText={searchText} />
+            <StateDetails currentState={modal} />
+        </ScrollView>
+    </>
     );
 };
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection: "row",
+        marginTop: "5%"
+    }
 });
 
 export default States;

@@ -7,11 +7,11 @@ export const openModal = (state) => ({
     type: "OPEN_MODAL",
     payload: state
 })
-
-export const saveNavigation = (navigation) => ({
-    type: "SAVE_NAVIGATION",
-    payload: navigation
+export const closeModal = () => ({
+    type: "CLOSE_MODAL",
+    payload: false
 })
+
 
 export const updateStates = (updatedState) => ({
     type: "UPDATE_STATE",

@@ -3,15 +3,12 @@ import {
     StyleSheet,
 } from 'react-native';
 import StatesList from "./StatesList";
-import Filter from "../modules/Filter";
 
-const StatesFiler = () => {
-    const [searchText, setSearchText] = useState("");
+const StatesFiler = (props) => {
 
     return (
         <>
-            <Filter searchText={(text) => { setSearchText(text) }} />
-            <StatesList searchableComponent={true} searchText={searchText} />
+            <StatesList searchableComponent={true} searchText={props.searchText} />
         </>
     );
 };

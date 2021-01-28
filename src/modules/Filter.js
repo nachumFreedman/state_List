@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
     StyleSheet,
-    SafeAreaView
+    View
 } from 'react-native';
 
 import { Searchbar } from 'react-native-paper';
@@ -15,17 +15,21 @@ const Filter = (props) => {
     };
 
     return (
-        <SafeAreaView>
+        <View style={styles.container}>
             <Searchbar
                 placeholder="Search"
                 onChangeText={onChangeSearch}
                 value={searchQuery}
             />
-        </SafeAreaView>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
+    container: {
+        position: "absolute",
+        width: "100%"
+    }
 });
 
 export default Filter;

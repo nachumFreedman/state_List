@@ -17,8 +17,6 @@ const StatesList = ({ searchableComponent, searchText }) => {
     return (
         <SafeAreaView style={styles.container}>
             <FlatList
-                columnWrapperStyle={{ justifyContent: 'space-between' }}
-                numColumns={2}
                 data={searchableComponent ? filteredStatesList : statesList}
                 renderItem={(item) => <StateItem eachState={item}></StateItem>}
                 keyExtractor={item => item.population + ""}
