@@ -5,15 +5,15 @@ import {
     ScrollView,
     View
 } from 'react-native';
-import { useSelector } from 'react-redux';
 
 
 const StateDetails = ({ currentState }) => {
-    const [countiesData, setCountiesData] = useState([]);
+    const [countiesData, setCountiesData] = useState(false);
     const [countiesPopulation, setCountiesPopulation] = useState(0);
     let stateDetails = currentState;
 
     useEffect(() => {
+        setCountiesData(false);
         fetch(stateDetails.detail)
             .then((res) => res.json())
             .then((res) => { setCountiesData(res.data) })
@@ -25,8 +25,9 @@ const StateDetails = ({ currentState }) => {
             return a + c.population
         }, 0)
         setCountiesPopulation(newCountiesPopulation);
-    }, [countiesData])
-    if (!stateDetails) return <ActivityIndicator />
+    }, [countiesData]);
+
+    if (!countiesData) return <ActivityIndicator />;
     return (
         <ScrollView nestedScrollEnabled={true} style={styles.innerContainer} contentContainerStyle={styles.container}>
             <View style={styles.scrollViewHeightController} >

@@ -1,4 +1,4 @@
-Make sure to have React-naive set up on your computer.
+Make sure to have React-naive CLI set up on your computer.
 
 IOS
 `yarn && npx pod-install`
