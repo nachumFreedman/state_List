@@ -17,7 +17,7 @@ import StateDetails from "./StateDetails";
 const States = () => {
     const [searchText, setSearchText] = useState("");
     const [ready, setReady] = useState(false);
-    const modal = useSelector((store) => store.stateData.currentModalState.item);
+    const modal = useSelector((store) => store.stateData.currentModalState ? store.stateData.currentModalState.item : false);
 
     const runSetReady = () => {
         setTimeout(() => {
@@ -49,7 +49,7 @@ const States = () => {
         <ScrollView horizontal={true} style={styles.container}>
             <StatesList />
             <StatesFiler searchText={searchText} />
-            <StateDetails currentState={modal} />
+            {modal && <StateDetails currentState={modal} />}
         </ScrollView>
     </>
     );
